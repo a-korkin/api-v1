@@ -16,7 +16,7 @@ class PersonRepository():
         return PersonSchemaOut.from_orm(item)
 
     def get_all(self) -> List[PersonSchemaOut]:       
-        return self.db.query(Person).all()
+        return self.db.query(Person).order_by(Person.last_name.desc()).all()
 
     def get_item(self, id: UUID) -> PersonSchemaOut:
         return self.db.query(Person).filter_by(id=id).first()
