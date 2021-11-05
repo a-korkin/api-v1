@@ -11,3 +11,10 @@ class Person(Entity):
     id = Column(UUID(as_uuid=True), ForeignKey("common.cd_entities.id"), primary_key=True, default=uuid.uuid4, comment="идентификатор")
     last_name = Column("c_last_name", String(500), nullable=False, comment="фамилия")
     first_name = Column("c_first_name", String(500), nullable=False, comment="имя")
+
+    def __init(self, last_name, first_name):
+        self.last_name = last_name
+        self.first_name = first_name
+
+    def __repr__(self) -> str:
+        return f"Person -> last name:{self.last_name}, first name:{self.first_name}"        
